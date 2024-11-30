@@ -1,6 +1,27 @@
 import React from "react";
 
 export default function Job() {
+  const dados = [
+    {
+      company: "DevHub",
+      position: "Frontend Developer",
+      location: "Maputo",
+      salary: "$200,00",
+    },
+    {
+      company: "Inovante",
+      position: "Backend Developer",
+      location: "Maputo",
+      salary: "$350,00",
+    },
+    {
+      company: "FarmHub",
+      position: "Blockchain Developer",
+      location: "Maputo",
+      salary: "$750,00",
+    },
+  ];
+
   return (
     <div className="job-container flex w-4/6 hover:shadow-[5px_5px_1px_0px_rgba(0,_0,_0,_0.5)] rounded-lg cursor-pointer px-8 py-4  ">
       <div className="job-info flex flex-col gap-y-1">
