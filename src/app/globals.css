@@ -25,6 +25,7 @@
   }
 } */
 
+.emprego-container,
 body {
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif; */
@@ -49,6 +50,7 @@ main {
 a {
   color: var(--title-nav);
   font-weight: 500;
+  cursor: pointer;
 }
 
 a:hover {
@@ -67,6 +69,20 @@ h2 {
 h3 {
   font-weight: 400;
   font-size: 24px;
+}
+
+input {
+  background: none;
+}
+
+button:hover {
+  font-weight: 500;
+}
+button {
+  transition: 250ms all ease-in;
+  color: var(--title-nav);
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .nav-bar {
@@ -96,4 +112,27 @@ h3 {
 
 .header-title {
   color: var(--active-color);
+}
+
+.job-container:hover {
+  background-color: var(--active-color);
+}
+.job-container {
+  transition: all 500ms ease-out;
+  border: 2px solid var(--active-color);
+
+  h3 {
+    font-size: medium;
+    font-weight: 400;
+  }
+
+  h4 {
+    font-size: x-large;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: small;
+    font-weight: 300;
+  }
 }

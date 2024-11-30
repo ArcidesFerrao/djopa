@@ -6,7 +6,7 @@ export default function EmpregoLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className="flex flex-col items-center justify-items-center h-auto gap-8 ">
+    <div className="flex flex-col items-center justify-items-center h-auto gap-16 w-full">
       <Nav>
         <NavLink href="/">Djopa</NavLink>
 
@@ -27,6 +27,6 @@ export default function EmpregoLayout({
         <div>footer</div>
         <div>footer</div>
       </footer>
-    </body>
+    </div>
   );
 }

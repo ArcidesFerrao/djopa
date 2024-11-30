@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import { Nav, NavLink } from "@/components/Nav";
+import SearchBar from "@/components/SearchBar";
 import Subtitle from "@/components/Subtitle";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <Header />
       <main className="flex flex-col gap-8 row-start-2 items-center justify-center px-4 ">
         <Subtitle />
+        <SearchBar />
       </main>
       <footer className="h-32 w-full row-start-3 flex flex-col gap-6 flex-wrap items-center justify-center px-4">
         <div className="h-8 w-full flex ">
