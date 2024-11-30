@@ -74,12 +74,24 @@ h3 {
   font-size: 24px;
 }
 
+label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
 input {
   background: none;
 }
 
 input::placeholder {
   color: var(--title-nav);
+}
+
+input[type="submit"] {
+  color: var(--title-color);
+  background-color: var(--text-color);
+  border-radius: 2px;
+  font-weight: 300;
 }
 
 button:hover {
@@ -90,6 +102,16 @@ button {
   color: var(--title-nav);
   font-weight: 300;
   cursor: pointer;
+}
+
+form input {
+  border: var(--text-color) 1px solid;
+  border-radius: 2px;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav-bar {
