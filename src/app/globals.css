@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: rgba(217, 217, 216, 0.801);
+  --background: rgba(217, 217, 216, 0.8);
+  --bg-color: rgba(217, 217, 216);
   --foreground: #171717;
   --footer-bg: #03101b;
   --text-color: #03101b;
+  --border-color: rgba(3, 16, 27, 0.5);
   --title-color: #ffffff;
   --active-color: #ffffff;
   --title-nav: #171717;
@@ -42,7 +44,7 @@ body {
 
 main {
   background: var(--background);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(8px);
 
   width: 100%;
@@ -105,7 +107,7 @@ button {
 }
 
 form input {
-  border: var(--text-color) 1px solid;
+  border: var(--border-color) 1px solid;
   border-radius: 2px;
 }
 
@@ -118,24 +120,35 @@ form div {
   display: flex;
   align-self: flex-start;
   justify-content: space-between;
-  height: 160px;
+  align-items: center;
+  /* height: 160px; */
   width: 100%;
   /* width: 1000px; */
   /* min-width: 400px; */
-  padding: 2rem 1rem;
-  border-radius: 0 0 18px 18px;
+  padding: 1rem;
+  border-radius: 8px;
 
   color: var(--title-nav);
 
+  a {
+    padding: 0 0.4rem;
+  }
+
   .navigators {
     display: flex;
+    align-items: center;
     gap: 2rem;
     height: 2rem;
-    .active {
-      color: var(--active-color);
-      /* text-decoration: underline 2px; */
-      border-bottom: 3px solid;
-    }
+    backdrop-filter: blur(8px);
+  }
+  .active {
+    color: var(--active-color);
+    /* text-decoration: underline 2px; */
+    border-bottom: 3px solid;
+  }
+
+  .last-nav {
+    backdrop-filter: blur(8px);
   }
 }
 
