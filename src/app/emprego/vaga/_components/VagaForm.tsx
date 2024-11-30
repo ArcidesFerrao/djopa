@@ -2,6 +2,7 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import React, { useActionState } from "react";
 import { z } from "zod";
+import addJob from "../../_actions/addJob";
 
 const jobPostSchema = z.object({
   title: z
@@ -19,7 +20,7 @@ const jobPostSchema = z.object({
 });
 
 export default function VagaForm() {
-  const [lastResult, action] = useActionState(addVaga, undefined);
+  const [lastResult, action] = useActionState(addJob, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
