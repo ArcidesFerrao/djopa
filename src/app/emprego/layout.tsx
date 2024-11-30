@@ -17,7 +17,10 @@ export default function EmpregoLayout({
         </div>
         <div className="space-nav"></div>
         <div className="space-nav"></div>
-        <NavLink href="/">Account</NavLink>
+        <div className="last-nav flex gap-1">
+          <NavLink href="/emprego/vaga">Adicionar Vagas</NavLink>
+          <NavLink href="/">Account</NavLink>
+        </div>
       </Nav>
 
       <main>{children}</main>

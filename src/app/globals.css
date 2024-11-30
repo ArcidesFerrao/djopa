@@ -78,6 +78,10 @@ input {
   background: none;
 }
 
+input::placeholder {
+  color: var(--title-nav);
+}
+
 button:hover {
   font-weight: 500;
 }
@@ -130,12 +134,12 @@ button {
   }
 
   h4 {
-    font-size: x-large;
+    font-size: larger;
     font-weight: 500;
   }
 
   p {
-    font-size: small;
+    font-size: x-small;
     font-weight: 300;
   }
 }
