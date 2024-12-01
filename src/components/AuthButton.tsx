@@ -3,12 +3,17 @@
 import { signIn, useSession } from "next-auth/react";
 import elipseload from "@/assets/Ellipsis.svg";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function AuthButton() {
   const { data: session, status } = useSession();
 
+  const [roleMenu, setRoleMenu] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
   if (status === "loading") {
-    return <Image className="loading" src={elipseload} alt={"loading"} />;
+    return <Image className="loading" src={elipseload} alt="loading" />;
   }
 
   if (!session) {
@@ -20,14 +25,44 @@ export default function AuthButton() {
       {session?.user ? (
         <p>Welcome, {session?.user?.name}!</p>
       ) : (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            signIn("google");
-          }}
-        >
-          Sign In
-        </button>
+        <div>
+          <button
+            disabled={loading}
+            onClick={(e) => {
+              e.preventDefault();
+              setRoleMenu(true);
+            }}
+          >
+            {loading ? "loading..." : "Sign In/ Sign Up"}
+          </button>
+
+          {roleMenu && (
+            <div className="menu">
+              <div className="menu-content">
+                <h3>Select your role</h3>
+                <button
+                  disabled={loading}
+                  onClick={() => {
+                    setLoading(true);
+                    signIn("google", { role: "EMPLOYER" });
+                  }}
+                >
+                  Empregador
+                </button>
+                <button
+                  disabled={loading}
+                  onClick={() => {
+                    setLoading(true);
+                    signIn("google", { role: "SEEKER" });
+                  }}
+                >
+                  Candidato
+                </button>
+                <button onClick={() => setRoleMenu(false)}>Cancelar</button>
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
