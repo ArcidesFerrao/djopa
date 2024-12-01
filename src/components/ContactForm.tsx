@@ -3,12 +3,12 @@ import React from "react";
 export default function ContactForm() {
   return (
     <form className="p-4 flex flex-col gap-y-4 w-4/6 ">
-      <div className="full-name flex-col gap-2">
-        <div className="flex gap-x-4">
+      <div className="full-name flex-col gap-4">
+        <div className="flex">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" />
         </div>
-        <div className="flex gap-x-4">
+        <div className="flex">
           <label htmlFor="apelido">Apelido</label>
           <input type="text" name="apelido" id="apelido" />
         </div>

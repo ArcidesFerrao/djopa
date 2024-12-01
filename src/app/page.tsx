@@ -2,8 +2,18 @@ import Header from "@/components/Header";
 import { Nav, NavLink } from "@/components/Nav";
 import SearchBar from "@/components/SearchBar";
 import Subtitle from "@/components/Subtitle";
+import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
+  const [account, setAccount] = useState(false);
+
+  if (session) {
+    setAccount(true);
+  }
+
   return (
     <div className="flex flex-col items-center justify-items-center h-auto gap-16 ">
       <Nav>
@@ -18,7 +28,10 @@ export default function Home() {
         <div className="nav-space"></div>
         <div className="nav-space"></div>
         <div className="nav-account">
-          <NavLink href="/">Account</NavLink>
+          {account && <NavLink href="/">Account</NavLink>}
+          {!account && (
+            <button onClick={() => signIn("google")}>Sign In</button>
+          )}
         </div>
       </Nav>
       <Header />
