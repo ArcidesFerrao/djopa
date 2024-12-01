@@ -79,14 +79,23 @@ h3 {
 label {
   font-weight: 400;
   font-size: 14px;
+  color: var(--text-color);
 }
 
 input {
+  color: var(--text-color);
+  padding: 0.2rem 0.4rem;
+  font-weight: 300;
+  font-size: 12px;
   background: none;
 }
 
 input::placeholder {
   color: var(--title-nav);
+}
+input[type="submit"]:hover {
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
 input[type="submit"] {
@@ -94,6 +103,7 @@ input[type="submit"] {
   background-color: var(--text-color);
   border-radius: 2px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 button:hover {
@@ -109,6 +119,7 @@ button {
 form input {
   border: var(--border-color) 1px solid;
   border-radius: 2px;
+  /* background-color: var(--background); */
 }
 
 form div {
@@ -140,6 +151,7 @@ form div {
     gap: 2rem;
     height: 2rem;
     backdrop-filter: blur(8px);
+    border-radius: 4px;
   }
   .active {
     color: var(--active-color);
@@ -148,7 +160,9 @@ form div {
   }
 
   .last-nav {
+    overflow: hidden;
     backdrop-filter: blur(8px);
+    border-radius: 4px;
   }
 }
 
@@ -181,4 +195,10 @@ form div {
 
 .empregos {
   z-index: 55;
+}
+
+.errorText {
+  color: #b37e7e;
+  font-weight: 300;
+  font-size: small;
 }

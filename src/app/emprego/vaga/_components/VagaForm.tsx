@@ -1,8 +1,11 @@
+"use client";
+
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import React, { useActionState } from "react";
 import { z } from "zod";
 import addJob from "../../_actions/addJob";
+// import CurrencyInput from "react-currency-input-field";
 
 const jobPostSchema = z.object({
   title: z
@@ -30,6 +33,8 @@ export default function VagaForm() {
     shouldRevalidate: "onInput",
   });
 
+  //   const [amount, setAmount] = useState("0.00");
+
   return (
     <form
       id={form.id}
@@ -52,6 +57,9 @@ export default function VagaForm() {
         <label htmlFor="title">Job Title</label>
         <input type="text" name="title" />
       </div>
+      {fields.title.errors && (
+        <p className="errorText">{fields.title.errors}</p>
+      )}
       <div>
         <label htmlFor="description">Job Description</label>
         <input type="text" name="description" />
@@ -60,10 +68,9 @@ export default function VagaForm() {
         <label htmlFor="jobUrl">Link to the job</label>
         <input type="text" name="jobUrl" />
       </div>
-      <div>
-        <label htmlFor="contract">Type of Contract</label>
-        <input type="text" name="contract" />
-      </div>
+      {fields.jobUrl.errors && (
+        <p className="errorText">{fields.jobUrl.errors}</p>
+      )}
       <div>
         <label htmlFor="contract">Type of Contract</label>
         <input type="text" name="contract" />
@@ -74,6 +81,13 @@ export default function VagaForm() {
       </div>
       <div>
         <label htmlFor="salary">Salary</label>
+        {/* <CurrencyInput
+          id="salary-input"
+          name="salary"
+          suffix="MZN"
+          decimalSeparator=","
+          groupSeparator="."
+        /> */}
         <input type="text" name="salary" />
       </div>
       <input type="submit" name="submit" id="submit" />

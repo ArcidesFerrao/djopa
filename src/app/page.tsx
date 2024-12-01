@@ -13,7 +13,7 @@ export default function Home() {
         <div className="navigators">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/emprego">Emprego</NavLink>
-          <NavLink href="/contact">Contacto</NavLink>
+          <NavLink href="/contacto">Contacto</NavLink>
         </div>
         <div className="nav-space"></div>
         <div className="nav-space"></div>
