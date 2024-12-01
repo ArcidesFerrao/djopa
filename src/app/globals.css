@@ -82,6 +82,15 @@ label {
   color: var(--text-color);
 }
 
+textarea {
+  background: none;
+  color: var(--text-color);
+  padding: 0.2rem 0.4rem;
+  font-weight: 300;
+  font-size: 12px;
+  border: var(--border-color) 1px solid;
+}
+
 input {
   color: var(--text-color);
   padding: 0.2rem 0.4rem;

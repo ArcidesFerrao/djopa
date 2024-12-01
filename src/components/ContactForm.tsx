@@ -3,7 +3,7 @@ import React from "react";
 export default function ContactForm() {
   return (
     <form className="p-4 flex flex-col gap-y-4 w-4/6 ">
-      <div className="full-name">
+      <div className="full-name flex-col gap-2">
         <div className="flex gap-x-4">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" />
@@ -23,8 +23,15 @@ export default function ContactForm() {
       </div>
       <div>
         <label htmlFor="mensagem">Mensagem</label>
-        <input type="text" name="mensagem" id="mensagem" />
       </div>
+      <div className="">
+        <textarea
+          className="flex w-full h-16 rounded-sm"
+          name="mensagem"
+          id="mensagem"
+        ></textarea>
+      </div>
+      <input type="submit" value="Enviar Mensagem" id="enviar" />
     </form>
   );
 }
