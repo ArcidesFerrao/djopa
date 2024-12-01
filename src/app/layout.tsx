@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+"use client";
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
-
-export const metadata: Metadata = {
-  title: "Djopa",
-  description: "Conectando talentos às oportunidades",
-};
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -19,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${mulish.className} antialiased`}>
+      <body className={`${mulish.className} antialiased`}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

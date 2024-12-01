@@ -211,3 +211,9 @@ form div {
   font-weight: 300;
   font-size: small;
 }
+
+.loading {
+  background: none;
+  height: 2rem;
+  
+}
