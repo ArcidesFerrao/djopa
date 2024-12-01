@@ -25,7 +25,7 @@ export default function AuthButton() {
       {session?.user ? (
         <p>Welcome, {session?.user?.name}!</p>
       ) : (
-        <div>
+        <div className="">
           <button
             disabled={loading}
             onClick={(e) => {
@@ -39,7 +39,7 @@ export default function AuthButton() {
           {roleMenu && (
             <div className="menu">
               <div className="menu-content">
-                <h3>Select your role</h3>
+                <h4>Select your role</h4>
                 <button
                   disabled={loading}
                   onClick={() => {
