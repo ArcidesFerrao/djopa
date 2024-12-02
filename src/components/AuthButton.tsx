@@ -24,7 +24,7 @@ export default function AuthButton() {
   return (
     <div>
       {session?.user ? (
-        <div className="flex">
+        <div className="flex gap-1">
           {session.user.role === "EMPLOYER" ? (
             <NavLink href="">Recrutar</NavLink>
           ) : (
