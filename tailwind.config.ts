@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        smooth: "var(--error-button)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

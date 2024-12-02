@@ -1,6 +1,10 @@
 import AuthButton from "@/components/AuthButton";
 import { Nav, NavLink } from "@/components/Nav";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Djopa",
+  description: "Conectando talentos às oportunidades",
+};
 export default function EmpregoLayout({
   children,
 }: Readonly<{

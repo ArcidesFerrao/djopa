@@ -12,6 +12,7 @@
   --title-color: #ffffff;
   --active-color: #ffffff;
   --title-nav: #171717;
+  --error-button: #dc2626;
   /* --title-nav: #a3a3a3; */
 
   display: flex;
@@ -203,7 +204,7 @@ form div {
 }
 
 .empregos {
-  z-index: 55;
+  /* z-index: 55; */
 }
 
 .errorText {
@@ -226,15 +227,30 @@ form div {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: rgba(0, 0, 0, 0.5); */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
 
 .menu-content {
-  color: #171717;
+  background: var(--footer-bg);
+  color: var(--title-color);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  /* padding: 2rem; */
   border-radius: 4px;
   text-align: center;
+  overflow: hidden;
+
+  h4 {
+    padding: 1rem;
+  }
+
+  button {
+    display: flex;
+    padding: 0.2rem 2rem;
+    justify-content: center;
+    width: 100%;
+    border: var(--text-color) 1px solid;
+    color: var(--title-color);
+  }
 }

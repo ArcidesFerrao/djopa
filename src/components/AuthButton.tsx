@@ -23,7 +23,7 @@ export default function AuthButton() {
   return (
     <div>
       {session?.user ? (
-        <p>Welcome, {session?.user?.name}!</p>
+        <p>Welcome, {session?.user?.name?.split(" ")[0]}!</p>
       ) : (
         <div className="">
           <button
@@ -51,14 +51,23 @@ export default function AuthButton() {
                 </button>
                 <button
                   disabled={loading}
-                  onClick={() => {
+                  onClick={async () => {
                     setLoading(true);
-                    signIn("google", { role: "SEEKER" });
+                    try {
+                      signIn("google", { role: "SEEKER" });
+                    } catch (error) {
+                      console.error("Sign in failed: ", error);
+                    }
                   }}
                 >
                   Candidato
                 </button>
-                <button onClick={() => setRoleMenu(false)}>Cancelar</button>
+                <button
+                  className="bg-smooth"
+                  onClick={() => setRoleMenu(false)}
+                >
+                  Cancelar
+                </button>
               </div>
             </div>
           )}
