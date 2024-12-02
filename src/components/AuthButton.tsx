@@ -4,6 +4,7 @@ import { signIn, useSession } from "next-auth/react";
 import elipseload from "@/assets/Ellipsis.svg";
 import Image from "next/image";
 import { useState } from "react";
+import { NavLink } from "./Nav";
 
 export default function AuthButton() {
   const { data: session, status } = useSession();
@@ -23,7 +24,14 @@ export default function AuthButton() {
   return (
     <div>
       {session?.user ? (
-        <p>Welcome, {session?.user?.name?.split(" ")[0]}!</p>
+        <div className="flex">
+          {session.user.role === "EMPLOYER" ? (
+            <NavLink href="">Recrutar</NavLink>
+          ) : (
+            <NavLink href="">Candidaturas</NavLink>
+          )}
+          <p>Welcome, {session?.user?.name?.split(" ")[0]}!</p>
+        </div>
       ) : (
         <div className="">
           <button

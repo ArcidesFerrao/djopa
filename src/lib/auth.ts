@@ -29,6 +29,7 @@ export const authOptions = {
                     id: token.sub as string,
                     name: token.name,
                     email: token.email,
+                    role: token.role as string,
                 }
             }
             console.log(session.user.name)
@@ -43,6 +44,7 @@ export const authOptions = {
                     sub: user.id,
                     name: user.name ?? user.email ?? "Default Name",
                     email: user.email,
+                    role: user.role as string,
                 }
             }
             console.log(token.name)

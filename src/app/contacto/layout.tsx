@@ -1,3 +1,4 @@
+import AuthButton from "@/components/AuthButton";
 import { Nav, NavLink } from "@/components/Nav";
 
 export default function EmpregoLayout({
@@ -13,13 +14,12 @@ export default function EmpregoLayout({
         <div className="navigators">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/emprego">Emprego</NavLink>
-          <NavLink href="/">Contacto</NavLink>
+          <NavLink href="/contacto">Contacto</NavLink>
         </div>
         <div className="space-nav"></div>
         <div className="space-nav"></div>
         <div className="last-nav flex gap-1">
-          <NavLink href="/emprego/vaga">Adicionar Vagas</NavLink>
-          <NavLink href="/">Account</NavLink>
+          <AuthButton />
         </div>
       </Nav>
 

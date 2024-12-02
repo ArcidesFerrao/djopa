@@ -142,10 +142,7 @@ form div {
   align-self: flex-start;
   justify-content: space-between;
   align-items: center;
-  /* height: 160px; */
   width: 100%;
-  /* width: 1000px; */
-  /* min-width: 400px; */
   padding: 1rem;
   border-radius: 8px;
 
@@ -173,6 +170,7 @@ form div {
     overflow: hidden;
     backdrop-filter: blur(8px);
     border-radius: 4px;
+    transition: all 250ms ease-out;
   }
 }
 
