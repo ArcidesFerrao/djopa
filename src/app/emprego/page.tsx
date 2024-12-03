@@ -1,6 +1,7 @@
 import SearchBar from "@/components/SearchBar";
 import React from "react";
 import Job from "./_components/Job";
+import db from "@/db/db";
 
 export default function EmpregoPage() {
   const dados = [
@@ -38,6 +39,27 @@ export default function EmpregoPage() {
     },
   ];
 
+  const vagas = async () => {
+    await db.jobPost.findMany({
+      select: {
+        createdAt: true,
+        employer: true,
+        location: true,
+        salary: true,
+        title: true,
+        id: true,
+      },
+    });
+  };
+
+  if (vagas.length === 0) {
+    return (
+      <div className="empregos flex py-4 items-center justify-center">
+        <p>0 vagas disponiveis</p>
+      </div>
+    );
+  }
+
   return (
     <div className="empregos flex flex-col py-4 gap-8 items-center justify-center">
       <SearchBar />
@@ -54,6 +76,11 @@ export default function EmpregoPage() {
             expireDate={vaga.expireDate}
           />
         ))}
+        <div>
+          {vagas.map((vaga) => (
+            <Job key={vaga.id} />
+          ))}
+        </div>
       </section>
     </div>
   );

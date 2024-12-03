@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Subtitle = () => {
+export default function Subtitle() {
   return (
     <div className="grid grid-cols-2 py-2 w-full items-center justify-between">
       <h2 className="font-bold">
@@ -15,4 +15,4 @@ export const Subtitle = () => {
       </p>
     </div>
   );
-};
+}

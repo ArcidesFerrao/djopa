@@ -39,7 +39,7 @@ body {
   padding: 0;
   /* overflow: hidden; */
   background: url("./assets/background-title.jpg") center no-repeat;
-  background-size: cover ;
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -135,6 +135,36 @@ form input {
 form div {
   display: flex;
   justify-content: space-between;
+}
+
+table {
+  border-spacing: 0;
+}
+
+tbody {
+  margin: 0.4rem 0;
+  border-radius: 3px;
+}
+tbody td {
+  border-radius: 3px;
+  padding: 1rem;
+}
+
+thead {
+  overflow: hidden;
+  display: flex;
+  border-radius: 3px;
+  margin: 0.4rem 0;
+}
+thead th {
+  padding: 1rem;
+  background-color: var(--text-color);
+  color: var(--title-color);
+}
+
+tbody tr {
+  border-radius: 3px;
+  background-color: var(--active-color);
 }
 
 .nav-bar {
