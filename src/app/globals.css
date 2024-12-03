@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #d9d9d8cc;
+  --background: rgba(217, 217, 216, 0.89);
   --bg-color: rgba(217, 217, 216);
   --foreground: #171717;
   --footer-bg: #03101b;
@@ -47,9 +47,10 @@ main {
   background: var(--background);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(8px);
-
+  transition: all 250ms ease-in;
   width: 100%;
-  min-height: 50vh;
+  min-height: 80vh;
+  height: fit-content;
   /* z-index: 99; */
 }
 

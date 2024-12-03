@@ -24,7 +24,7 @@ export default function RootLayout({
 
               <div className="navigators">
                 <NavLink href="/">Home</NavLink>
-                <NavLink href="/emprego">Emprego</NavLink>
+                {/* <NavLink href="/emprego">Emprego</NavLink> */}
                 <NavLink href="/contacto">Contacto</NavLink>
               </div>
               <div className="space-nav"></div>
