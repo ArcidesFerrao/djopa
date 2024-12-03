@@ -21,7 +21,7 @@ export function NavLink({ ...props }) {
   );
 }
 
-export function NavButton() {
+export const NavButton = () => {
   return (
     <div className="nav-menu">
       <button>
@@ -29,4 +29,4 @@ export function NavButton() {
       </button>
     </div>
   );
-}
+};

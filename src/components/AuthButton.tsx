@@ -26,9 +26,9 @@ export default function AuthButton() {
       {session?.user ? (
         <div className="flex gap-1">
           {session.user.role === "EMPLOYER" ? (
-            <NavLink href="">Recrutar</NavLink>
+            <NavLink href="/emprego/vaga">Recrutar</NavLink>
           ) : (
-            <NavLink href="">Candidaturas</NavLink>
+            <NavLink href="/candidato/candidaturas">Candidaturas</NavLink>
           )}
           <p>Welcome, {session?.user?.name?.split(" ")[0]}!</p>
         </div>
