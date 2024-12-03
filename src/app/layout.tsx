@@ -2,6 +2,8 @@
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import { Nav, NavLink } from "@/components/Nav";
+import AuthButton from "@/components/AuthButton";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -14,8 +16,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.className} antialiased`}>
-        <SessionProvider>{children}</SessionProvider>
+      <body className={`${mulish.className} antialiased `}>
+        <SessionProvider>
+          <div className="flex flex-col items-center justify-items-center h-auto gap-16 w-full">
+            <Nav>
+              <NavLink href="/">Djopa</NavLink>
+
+              <div className="navigators">
+                <NavLink href="/">Home</NavLink>
+                <NavLink href="/emprego">Emprego</NavLink>
+                <NavLink href="/contacto">Contacto</NavLink>
+              </div>
+              <div className="space-nav"></div>
+              <div className="space-nav"></div>
+              <div className="last-nav flex gap-1">
+                <AuthButton />
+              </div>
+            </Nav>
+            {children}
+            <footer>
+              <div>footer</div>
+              <div>footer</div>
+              <div>footer</div>
+            </footer>
+          </div>
+        </SessionProvider>
       </body>
     </html>
   );

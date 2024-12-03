@@ -3,12 +3,11 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import elipseload from "@/assets/Ellipsis.svg";
-import React, { useState } from "react";
+import React from "react";
 import db from "@/db/db";
 
 export default function CandidaturasPage() {
   const { data: session, status } = useSession();
-  const [available, setAvailable] = useState(false);
 
   if (status === "unauthenticated") {
     return <p>Sign in with Google</p>;
@@ -26,14 +25,16 @@ export default function CandidaturasPage() {
       },
     });
   };
-
-  if (candidaturas.length === 0) setAvailable(true);
+  const available = () => {
+    return candidaturas.length === 0;
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 w-full">
+    // <div className="flex flex-col items-center justify-center gap-2 w-full">
+    <main>
       <h2>Candidaturas</h2>
       <p></p>
-      <table className="">
+      <table className="flex flex-col gap-2">
         <thead>
           <tr>
             <th>Emprego</th>
@@ -42,13 +43,22 @@ export default function CandidaturasPage() {
           </tr>
         </thead>
         <tbody>
-          {!available && (
+          {available() ? (
             <tr>
               <td>0 candidaturas encontradas...</td>
+            </tr>
+          ) : (
+            <tr>
+              <td>Devhub</td>
+              <td>27-03-2025</td>
+              <td>
+                <span className="line-md--clipboard-check"></span>
+              </td>
             </tr>
           )}
         </tbody>
       </table>
-    </div>
+    </main>
+    // </div>
   );
 }
