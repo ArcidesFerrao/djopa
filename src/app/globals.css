@@ -114,7 +114,9 @@ input[type="submit"] {
   background-color: var(--text-color);
   border-radius: 2px;
   font-weight: 300;
+  font-size: medium;
   cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
@@ -130,6 +132,8 @@ button {
 form input {
   border: var(--border-color) 1px solid;
   border-radius: 2px;
+  width: 50%;
+
   /* background-color: var(--background); */
 }
 
