@@ -1,16 +1,17 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer, { TransportOptions } from 'nodemailer'
 
 
-export default async function handler(req: NextApiRequest , res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const {name, apelido, email, assunto, mensagem} = req.body;
+export async function POST(req: NextRequest ) {
+  const {name, apelido, email, assunto, mensagem} = await req.json();
+
 
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
-            host:587,
-            secure: true,
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
             auth: {
                 use: process.env.SMTP_SERVER_USERNAME,
                 pass: process.env.SMTP_SERVER_PASSWORD,
@@ -25,14 +26,10 @@ export default async function handler(req: NextApiRequest , res: NextApiResponse
         };
 
         await transporter.sendMail(mailOptions);
-        res.status(200).send('Message sent successfully');
+        return NextResponse.json({message: 'Message sent successfully'}, {status: 200})
         
     } catch (error ) {
-        console.error(error);
-        res.status(500).send('Failed to send Message');
+        console.error('Error sending email: ', error);
+        return NextResponse.json({message: 'Failed to send Message'}, {status: 500})
     }
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).send('Method not allowed');
-  }
 }
