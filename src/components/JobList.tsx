@@ -7,13 +7,14 @@ interface JobData {
   id: string;
   company: string;
   position: string;
+  location: string;
   salary: string;
   addedAt: Date;
   expireDate: Date;
 }
 
 export default function JobList() {
-  const dados = [
+  const dados: JobData[] = [
     {
       company: "DevHub",
       position: "Frontend Developer",
@@ -21,6 +22,7 @@ export default function JobList() {
       salary: "$200,00",
       addedAt: "",
       expireDate: "",
+      id: 1,
     },
     {
       company: "Inovante",
@@ -29,6 +31,7 @@ export default function JobList() {
       salary: "$350,00",
       addedAt: "",
       expireDate: "",
+      id: 2,
     },
     {
       company: "FarmHub",
@@ -37,6 +40,7 @@ export default function JobList() {
       salary: "$750,00",
       addedAt: "",
       expireDate: "",
+      id: 3,
     },
     {
       company: "Zamuka",
@@ -45,16 +49,17 @@ export default function JobList() {
       salary: "$1050,00",
       addedAt: "",
       expireDate: "",
+      id: 4,
     },
   ];
 
   const [query, setQuery] = useState<string>("");
 
-  const search = (dados) => {
+  const search = (dados: JobData) => {
     return dados.filter(
-      (item: { position: string; company: string }) =>
-        (item.position.toLowerCase() || "").includes(query) ||
-        (item.company.toLowerCase() || "").includes(query)
+      (item) =>
+        item.position.toLowerCase().includes(query.toLowerCase()) ||
+        item.company.toLowerCase().includes(query.toLowerCase())
     );
   };
 
@@ -77,17 +82,18 @@ export default function JobList() {
       </div>
 
       <section className="jobs flex flex-col gap-4 w-full items-center justify-center">
-        {search(dados).map((vaga, index) => (
-          <Job
-            key={index}
-            company={vaga.company}
-            position={vaga.position}
-            location={vaga.location}
-            salary={vaga.salary}
-            addedAt={vaga.addedAt}
-            expireDate={vaga.expireDate}
-          />
-        ))}
+        {dados &&
+          search(dados).map((vaga: JobData) => (
+            <Job
+              key={vaga.id}
+              company={vaga.company}
+              position={vaga.position}
+              location={vaga.location}
+              salary={vaga.salary}
+              addedAt={vaga.addedAt}
+              expireDate={vaga.expireDate}
+            />
+          ))}
         <div></div>
       </section>
     </>

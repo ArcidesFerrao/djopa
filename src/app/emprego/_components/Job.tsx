@@ -22,7 +22,7 @@ export default function Job({ ...props }) {
       <div className="flex flex-col items-center justify-between">
         <div>new</div>
         <div>
-          <p>12/12/2024</p>
+          <p>{props.addedAt}</p>
         </div>
       </div>
     </div>

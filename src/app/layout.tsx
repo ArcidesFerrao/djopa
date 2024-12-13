@@ -4,6 +4,7 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Nav, NavLink } from "@/components/Nav";
 import AuthButton from "@/components/AuthButton";
+import Footer from "@/components/Footer";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -34,11 +35,7 @@ export default function RootLayout({
               </div>
             </Nav>
             {children}
-            <footer>
-              <div>footer</div>
-              <div>footer</div>
-              <div>footer</div>
-            </footer>
+            <Footer />
           </div>
         </SessionProvider>
       </body>

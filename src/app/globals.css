@@ -139,7 +139,7 @@ form div {
 }
 
 table {
-  /* width: 600px; */
+  width: 600px;
   border-collapse: collapse;
   border-spacing: 0;
   overflow: hidden;
@@ -156,7 +156,7 @@ tbody td {
 
 thead {
   overflow: hidden;
-  display: flex;
+  /* display: flex; */
   border-radius: 3px;
   /* margin: 0.4rem 0; */
 }
@@ -167,14 +167,14 @@ thead th {
 }
 
 thead tr {
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
 tbody tr {
   border-radius: 3px;
   background-color: var(--active-color);
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
@@ -238,8 +238,19 @@ tbody {
   }
 }
 
+.footer,
 .header-title {
+  width: 100%;
+  padding: 1rem;
   color: var(--active-color);
+
+  a {
+    color: var(--active-color);
+  }
+
+  p {
+    font-size: small;
+  }
 }
 
 .job-container:hover {
@@ -260,7 +271,7 @@ tbody {
   }
 
   p {
-    font-size: x-small;
+    font-size: small;
     font-weight: 300;
   }
 }

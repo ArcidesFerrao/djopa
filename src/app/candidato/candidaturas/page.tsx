@@ -30,11 +30,10 @@ export default function CandidaturasPage() {
   };
 
   return (
-    // <div className="flex flex-col items-center justify-center gap-2 w-full">
-    <main>
+    <main className="flex flex-col items-center gap-4">
       <h2>Candidaturas</h2>
       <p></p>
-      <table className="flex flex-col gap-2">
+      <table>
         <thead>
           <tr>
             <th>Emprego</th>
@@ -44,9 +43,7 @@ export default function CandidaturasPage() {
         </thead>
         <tbody>
           {available() ? (
-            <tr>
-              <td>0 candidaturas encontradas...</td>
-            </tr>
+            <tr></tr>
           ) : (
             <tr>
               <td>Devhub</td>
@@ -58,7 +55,7 @@ export default function CandidaturasPage() {
           )}
         </tbody>
       </table>
+      {available() && <span>0 candidaturas encontradas...</span>}
     </main>
-    // </div>
   );
 }
