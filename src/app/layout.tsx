@@ -19,13 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${mulish.className} antialiased `}>
         <SessionProvider>
-          <div className="flex flex-col items-center justify-items-center h-auto gap-16 w-full">
+          <div className="flex flex-col items-center justify-items-center h-auto gap-24 w-full">
             <Nav>
               <NavLink href="/">Djopa</NavLink>
 
               <div className="navigators">
                 <NavLink href="/">Home</NavLink>
-                {/* <NavLink href="/emprego">Emprego</NavLink> */}
                 <NavLink href="/contacto">Contacto</NavLink>
               </div>
               <div className="space-nav"></div>

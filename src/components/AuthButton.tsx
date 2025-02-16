@@ -28,9 +28,20 @@ export default function AuthButton() {
           {session.user.role === "EMPLOYER" ? (
             <NavLink href="/emprego/vaga">Recrutar</NavLink>
           ) : (
-            <NavLink href="/candidato/candidaturas">Candidaturas</NavLink>
+            ""
           )}
-          <p>Welcome, {session?.user?.name?.split(" ")[0]}!</p>
+          <p>
+            Welcome,
+            <NavLink
+              href={
+                session.user.role === "EMPLOYER"
+                  ? "/emprego/vaga"
+                  : "/candidato"
+              }
+            >
+              {session?.user?.name?.split(" ")[0]}!
+            </NavLink>
+          </p>
         </div>
       ) : (
         <div className="">

@@ -1,61 +1,61 @@
 "use client";
 
-import Job from "../app/emprego/_components/Job";
+import Job from "./Job";
 import { useState } from "react";
 
 interface JobData {
-  id: string;
+  id: number;
   company: string;
   position: string;
   location: string;
   salary: string;
-  addedAt: Date;
-  expireDate: Date;
+  addedAt: string;
+  expireDate: string;
 }
 
 export default function JobList() {
   const dados: JobData[] = [
     {
+      id: 1,
       company: "DevHub",
       position: "Frontend Developer",
       location: "Maputo",
       salary: "$200,00",
-      addedAt: "",
-      expireDate: "",
-      id: 1,
+      addedAt: new Date(2024, 11, 2).toDateString(),
+      expireDate: new Date(2025, 5, 12).toDateString(),
     },
     {
+      id: 2,
       company: "Inovante",
       position: "Backend Developer",
       location: "Maputo",
       salary: "$350,00",
-      addedAt: "",
-      expireDate: "",
-      id: 2,
+      addedAt: new Date(2024, 12, 12).toDateString(),
+      expireDate: new Date(2025, 1, 18).toDateString(),
     },
     {
+      id: 3,
       company: "FarmHub",
       position: "Blockchain Developer",
       location: "Maputo",
       salary: "$750,00",
-      addedAt: "",
-      expireDate: "",
-      id: 3,
+      addedAt: new Date(2024, 12, 12).toDateString(),
+      expireDate: new Date(2025, 2, 1).toDateString(),
     },
     {
+      id: 4,
       company: "Zamuka",
       position: "Blockchain Developer",
       location: "Maputo",
       salary: "$1050,00",
-      addedAt: "",
-      expireDate: "",
-      id: 4,
+      addedAt: new Date(2024, 12, 12).toDateString(),
+      expireDate: new Date(2025, 2, 2).toDateString(),
     },
   ];
 
   const [query, setQuery] = useState<string>("");
 
-  const search = (dados: JobData) => {
+  const search = (dados: JobData[]) => {
     return dados.filter(
       (item) =>
         item.position.toLowerCase().includes(query.toLowerCase()) ||
