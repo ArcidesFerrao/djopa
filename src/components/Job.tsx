@@ -2,13 +2,12 @@ import { NavLink } from "@/components/Nav";
 import React from "react";
 
 export default function Job({ ...props }) {
-  const id = props.key;
   return (
     <div className="job-container flex w-4/6 hover:shadow-[5px_5px_1px_0px_rgba(0,_0,_0,_0.5)] rounded-lg cursor-pointer px-8 py-4 justify-between ">
       <div className="job-info flex flex-col gap-y-1">
         <div className="position">
           <h4>
-            <NavLink href={`/emprego/${id}`}>{props.position}</NavLink>
+            <NavLink href={`/emprego/${props.id}`}>{props.position}</NavLink>
           </h4>
         </div>
         <div className="company">

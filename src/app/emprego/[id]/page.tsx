@@ -1,19 +1,15 @@
-// interface EmpregoProps {
-//   params: Promise<{ id: number }>;
-// }
+export default async function JobPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
-// export default async function EmpregoPage({ params }: EmpregoProps) {
-//   const { id } = await params;
+  if (!id) return <p>Vaga nao encontrada</p>;
 
-//   return <main>Vaga Id: {id}</main>;
-// }
-"use client";
-
-import { useParams } from "next/navigation";
-
-export default function page() {
-  const params = useParams();
-  const id = params?.id;
-
-  return <main>{id}</main>;
+  return (
+    <main>
+      <p>{id}</p>
+    </main>
+  );
 }

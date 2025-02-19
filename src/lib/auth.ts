@@ -22,6 +22,7 @@ export const authOptions = {
                     id: user.id,
                     name: user.name,
                     email: user.email,
+                    role: user.role,
                 }
             } else if (token) {
                 session.user = {
@@ -32,9 +33,7 @@ export const authOptions = {
                     role: token.role as string,
                 }
             }
-            console.log(session.user.name)
-                
-                
+            // console.log(session.user.name)
             return session;
         },
         async jwt({token, user}) {
@@ -51,7 +50,7 @@ export const authOptions = {
             return token;
         },
         async signIn({ user, account }) {
-            // const role = account?.role || "SEEKER";
+            const role = account?.role ;
             const existingAccount = await db.account.findUnique({
                 where: { 
                     provider_providerAccountId: {
@@ -79,12 +78,13 @@ export const authOptions = {
                         }
                     })
                 } else {
+                    console.log(role)
                     const newUser = await db.user.create({
                         data: {
                             email: user.email!,
                             name: user.name!,
                             image: user.image,
-                            role: account?.role === "SEEKER" ? Role.SEEKER : Role.EMPLOYER ,
+                            role: role === "SEEKER" ? Role.SEEKER : Role.EMPLOYER ,
                             password: "",
                         },
                     });

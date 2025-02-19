@@ -86,6 +86,7 @@ export default function JobList() {
           search(dados).map((vaga: JobData) => (
             <Job
               key={vaga.id}
+              id={vaga.id}
               company={vaga.company}
               position={vaga.position}
               location={vaga.location}
