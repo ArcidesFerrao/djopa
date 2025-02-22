@@ -13,6 +13,7 @@
   --active-color: #ffffff;
   --title-nav: #171717;
   --error-button: #dc2626;
+  --disableb-input: #bdbdbd;
   /* --title-nav: #a3a3a3; */
 
   display: flex;
@@ -385,4 +386,11 @@ tbody {
 
 .position a:hover {
   color: var(--footer-bg);
+}
+
+.job-form input:disabled {
+  border: none;
+  background: none;
+  /* background-color: var(--title-nav); */
+  /* color: var(--disableb-input); */
 }

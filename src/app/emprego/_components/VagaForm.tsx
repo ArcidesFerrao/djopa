@@ -22,7 +22,7 @@ const jobPostSchema = z.object({
   jobUrl: z.string().url("Invalid URL format").optional(),
 });
 
-export default function VagaForm() {
+export default function VagaForm({ userId }: { userId: string }) {
   const [lastResult, action] = useActionState(addJob, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -40,8 +40,12 @@ export default function VagaForm() {
       id={form.id}
       onSubmit={form.onSubmit}
       action={action}
-      className="p-4 flex flex-col gap-y-4 w-4/6 "
+      className="job-form p-4 flex flex-col gap-y-4 w-4/6 "
     >
+      <div>
+        <label htmlFor="company">Employer ID</label>
+        <input type="text" name="company" defaultValue={userId} disabled />
+      </div>
       <div>
         <label htmlFor="company">Company</label>
         <input type="text" name="company" />
@@ -49,10 +53,6 @@ export default function VagaForm() {
       {fields.company.errors && (
         <p className="errorText">{fields.company.errors}</p>
       )}
-      <div>
-        <label htmlFor="logo">Logo</label>
-        <input type="text" name="logo" />
-      </div>
       <div>
         <label htmlFor="title">Job Title</label>
         <input type="text" name="title" />
@@ -65,20 +65,15 @@ export default function VagaForm() {
         <input type="text" name="description" />
       </div>
       <div>
-        <label htmlFor="jobUrl">Link to the job</label>
-        <input type="text" name="jobUrl" />
+        <label htmlFor="location">Location</label>
+        <input type="text" name="location" />
       </div>
-      {fields.jobUrl.errors && (
-        <p className="errorText">{fields.jobUrl.errors}</p>
-      )}
+
       <div>
         <label htmlFor="contract">Type of Contract</label>
         <input type="text" name="contract" />
       </div>
-      <div>
-        <label htmlFor="location">Location</label>
-        <input type="text" name="location" />
-      </div>
+
       <div>
         <label htmlFor="salary">Salary</label>
         {/* <CurrencyInput
@@ -90,6 +85,13 @@ export default function VagaForm() {
         /> */}
         <input type="text" name="salary" />
       </div>
+      <div>
+        <label htmlFor="jobUrl">Link to the job</label>
+        <input type="text" name="jobUrl" />
+      </div>
+      {fields.jobUrl.errors && (
+        <p className="errorText">{fields.jobUrl.errors}</p>
+      )}
       <input type="submit" name="submit" id="submit" className="p-2 my-4" />
     </form>
   );
