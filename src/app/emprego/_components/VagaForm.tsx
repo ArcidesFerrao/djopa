@@ -4,7 +4,7 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import React, { useActionState } from "react";
 import { z } from "zod";
-import addJob from "../../_actions/addJob";
+import addJob from "../_actions/addJob";
 // import CurrencyInput from "react-currency-input-field";
 
 const jobPostSchema = z.object({
@@ -90,7 +90,7 @@ export default function VagaForm() {
         /> */}
         <input type="text" name="salary" />
       </div>
-      <input type="submit" name="submit" id="submit" />
+      <input type="submit" name="submit" id="submit" className="p-2 my-4" />
     </form>
   );
 }

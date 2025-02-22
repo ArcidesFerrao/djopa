@@ -24,7 +24,7 @@ export default function AuthButton() {
   return (
     <div>
       {session?.user ? (
-        <div className="flex gap-1">
+        <div className="flex gap-4">
           {session.user.role === "EMPLOYER" ? (
             <NavLink href="/emprego/vaga">Recrutar</NavLink>
           ) : (
@@ -34,9 +34,7 @@ export default function AuthButton() {
             Welcome,
             <NavLink
               href={
-                session.user.role === "EMPLOYER"
-                  ? "/emprego/vaga"
-                  : "/candidato"
+                session.user.role === "EMPLOYER" ? `/empregador` : "/candidato"
               }
             >
               {session?.user?.name?.split(" ")[0]}!

@@ -29,6 +29,7 @@ export default async function addJob(prevState: unknown, formData: FormData) {
 
   await db.jobPost.create({
     data: {
+        employer: submission.value.company,
         title: submission.value.title,
         description: submission.value.description,
         location: submission.value.location,

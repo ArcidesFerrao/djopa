@@ -366,6 +366,7 @@ tbody {
   mask-size: 100% 100%;
 }
 
+.empregador-header img,
 .candidato-header img {
   border-radius: 50%;
 }

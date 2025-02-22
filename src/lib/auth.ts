@@ -66,7 +66,6 @@ export const authOptions = {
                         email: user.email || ""
                     }
                 })
-
                 if (existingUser) {
                     await db.account.create({
                         data: {
@@ -88,7 +87,6 @@ export const authOptions = {
                             password: "",
                         },
                     });
-    
                     await db.account.create({
                         data: {
                             userId: newUser.id,
@@ -98,9 +96,7 @@ export const authOptions = {
                             type: account?.type || "oauth"
                         }
                     })
-
                 }
-
             }
             return true;
         }
