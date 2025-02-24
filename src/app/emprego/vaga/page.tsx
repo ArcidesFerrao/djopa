@@ -1,4 +1,4 @@
-import VagaForm from "../_components/VagaForm";
+import VagaForm from "../../_components/VagaForm";
 
 export default function NovaVagaPage() {
   return (
