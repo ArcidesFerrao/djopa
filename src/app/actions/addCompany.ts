@@ -7,11 +7,13 @@ import { redirect } from "next/navigation";
 
 
 export default async function addCompany(prevState: unknown, formData: FormData) {
-  const submission = parseWithZod(formData, {schema: companySchema,});
-
-  if (submission.status !== "success") {
-    return submission.reply();
-  }
+    const submission = parseWithZod(formData, {schema: companySchema,});
+    
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+    
+    console.log(submission.value.userId)
 
   await db.company.create({
     data: {
@@ -19,8 +21,13 @@ export default async function addCompany(prevState: unknown, formData: FormData)
         description: submission.value.companyDesc,
         address: submission.value.companyAddress,
         website: submission.value.companyUrl,
+        user: {
+            connect: {
+                id: submission.value.userId,
+            }
+        }
     }
   })
 
-  redirect("/emprego")
+  redirect("/empregador")
 }

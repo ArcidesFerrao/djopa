@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const companySchema = z.object({
+    userId: z.string(),
     companyName: z
       .string()
       .min(3, "Title must be at least 3 characters long")

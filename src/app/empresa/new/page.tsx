@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NovaEmpresaPage() {
   return (
-    <main className="flex flex-col items-center justify-center p-2 gap-4">
+    <main className="flex flex-col items-center p-4 gap-4">
       <div className="new-company-header">
         <h3>Registar Nova Empresa</h3>
       </div>
