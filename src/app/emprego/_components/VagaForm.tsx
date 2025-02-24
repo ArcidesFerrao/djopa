@@ -22,7 +22,7 @@ const jobPostSchema = z.object({
   jobUrl: z.string().url("Invalid URL format").optional(),
 });
 
-export default function VagaForm({ userId }: { userId: string }) {
+export default function VagaForm() {
   const [lastResult, action] = useActionState(addJob, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -42,10 +42,6 @@ export default function VagaForm({ userId }: { userId: string }) {
       action={action}
       className="job-form p-4 flex flex-col gap-y-4 w-4/6 "
     >
-      <div>
-        <label htmlFor="company">Employer ID</label>
-        <input type="text" name="company" defaultValue={userId} disabled />
-      </div>
       <div>
         <label htmlFor="company">Company</label>
         <input type="text" name="company" />
@@ -87,7 +83,7 @@ export default function VagaForm({ userId }: { userId: string }) {
       </div>
       <div>
         <label htmlFor="jobUrl">Link to the job</label>
-        <input type="text" name="jobUrl" />
+        <input type="url" name="jobUrl" />
       </div>
       {fields.jobUrl.errors && (
         <p className="errorText">{fields.jobUrl.errors}</p>

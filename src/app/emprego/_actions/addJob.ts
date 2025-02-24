@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const jobPostSchema = z.object({
-    userId: z.string(),
+    companyId: z.string(),
     company: z
     .string()
     .min(2, "Company name must be at least 2 characters long")
@@ -15,10 +15,13 @@ const jobPostSchema = z.object({
       .string()
       .min(3, "Title must be at least 3 characters long")
       .max(100, "Title cannot exceed 100 characters"),
-    description: z.string().min(10, "Description mst be at lt 10 characters"),
+    description: z.string().min(10, "Description must be at least 10 characters"),
+    competencies: z.string().min(10, "Competencies must be at least 10 characters"),
+    type: z.string().min(2, "Type is required"),
     location: z.string().min(2, "Location is required"),
-    salary: z.string().optional(),
+    salary: z.number().optional(),
     jobUrl: z.string().url("Invalid URL format").optional(),
+    expiresAt: z.date(),
   });
 
 export default async function addJob(prevState: unknown, formData: FormData) {
@@ -32,10 +35,13 @@ export default async function addJob(prevState: unknown, formData: FormData) {
     data: {
         title: submission.value.title,
         description: submission.value.description,
+        competencies: submission.value.competencies,
+        type: submission.value.type,
         location: submission.value.location,
         salary: submission.value?.salary,
-        employer: {
-          connect: { id: submission.value.userId }
+        expiresAt: submission.value.expiresAt,
+        company: {
+          connect: { id: submission.value.companyId }
         }
     }
   })

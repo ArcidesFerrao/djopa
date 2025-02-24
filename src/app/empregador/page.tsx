@@ -3,6 +3,7 @@
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import elipseload from "@/assets/Ellipsis.svg";
+import { NavLink } from "@/components/Nav";
 
 export default function EmpregadorPage() {
   const { data: session, status } = useSession();
@@ -37,7 +38,14 @@ export default function EmpregadorPage() {
           {status === "unauthenticated" && <div>Login to your account</div>}
         </div>
 
-        <div className="empregador-details"></div>
+        <div className="empregador-details">
+          <div className="companies">
+            <div className="companies-header flex items-center justify-between gap-4">
+              <h3>Empresas</h3>
+              <NavLink href="/empresa/new">Registar Empresa</NavLink>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
