@@ -38,7 +38,7 @@ model Company {
   description String?
   website     String
   address     String
-  userId      String    @unique
+  userId      String
   user        User      @relation(fields: [userId], references: [id])
   jobs        JobPost[]
 

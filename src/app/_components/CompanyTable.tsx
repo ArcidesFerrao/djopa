@@ -20,17 +20,19 @@ export default function EmployerTable() {
   useEffect(() => {
     const getCompanies = async () => {
       try {
-        const res = await fetch("/api/companies");
+        const res = await fetch(
+          session ? `/api/companies?userId=${user}` : `/api/companies`
+        );
         if (!res.ok) throw new Error("Error fetching companies");
         const companyData = await res.json();
         setCompanies(companyData);
       } catch (error) {
-        console.error("Error fetching companies:", error);
+        console.error("Error fetching companies list:", error);
       }
     };
 
     getCompanies();
-  }, []);
+  }, [user, session]);
   if (!user) return <p>Login to your account</p>;
 
   return (

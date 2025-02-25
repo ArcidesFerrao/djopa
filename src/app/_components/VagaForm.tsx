@@ -17,7 +17,8 @@ export type Company = {
 
 export default function VagaForm() {
   const [companies, setCompanies] = useState<Company[]>([]);
-  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+  const [selectedCompany, setSelectedCompany] = useState<string>();
+  const [website, setWebsite] = useState("");
   const [lastResult, action] = useActionState(addJob, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -29,7 +30,9 @@ export default function VagaForm() {
   });
 
   const handleCompanyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedCompany(event.target.value.toString());
+    const companyId = event.target.value;
+    setSelectedCompany(companyId);
+
     console.log(selectedCompany);
   };
 
@@ -37,6 +40,12 @@ export default function VagaForm() {
 
   //   const [amount, setAmount] = useState("0.00");
   useEffect(() => {
+    if (selectedCompany) {
+      const findCompany = companies.find(
+        (company) => company.id.toString() === selectedCompany
+      );
+      setWebsite(findCompany ? findCompany.website : "");
+    }
     const getCompanies = async () => {
       const user = session?.user.id;
       try {
@@ -52,7 +61,7 @@ export default function VagaForm() {
     };
 
     getCompanies();
-  }, [session]);
+  }, [selectedCompany, session]);
 
   if (!session?.user) return console.log(session?.user?.id);
 
@@ -65,16 +74,17 @@ export default function VagaForm() {
     >
       <div>
         <label htmlFor="company">Company</label>
-        <div className="radio-company">
+        <div className="radio-company flex gap-4">
           {companies.map((company) => (
             <label key={company.id} className="radio">
               <input
+                className="sr-only"
                 type="radio"
                 name="company"
                 value={company.id}
                 onChange={handleCompanyChange}
               />
-              <span className="radio-option">{company.name}</span>
+              <span className="radio-option py-1 px-2">{company.name}</span>
             </label>
           ))}
         </div>
@@ -116,7 +126,12 @@ export default function VagaForm() {
       </div>
       <div>
         <label htmlFor="jobUrl">Link to the job</label>
-        <input type="url" name="jobUrl" />
+        <input
+          type="url"
+          name="jobUrl"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
       </div>
       {fields.jobUrl.errors && (
         <p className="errorText">{fields.jobUrl.errors}</p>
