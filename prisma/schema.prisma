@@ -21,7 +21,7 @@ model User {
   name         String
   role         Role // "SEEKER" or "EMPLOYER"
   createdAt    DateTime      @default(now())
-  company      Company?
+  companies    Company[]
   applications Application[]
   Account      Account[]
   Session      Session[]

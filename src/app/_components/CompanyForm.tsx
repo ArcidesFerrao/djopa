@@ -19,7 +19,9 @@ export default function CompanyForm() {
   });
 
   const { data: session } = useSession();
+
   if (!session?.user) return console.log(session?.user?.id);
+
   return (
     <form
       id={form.id}

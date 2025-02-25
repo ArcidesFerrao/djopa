@@ -21,7 +21,7 @@ export default function EmployerTable() {
     const getCompanies = async () => {
       try {
         const res = await fetch("/api/companies");
-        if (!res.ok) throw new Error("Error fetching categories");
+        if (!res.ok) throw new Error("Error fetching companies");
         const companyData = await res.json();
         setCompanies(companyData);
       } catch (error) {

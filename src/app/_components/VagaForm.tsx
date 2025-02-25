@@ -1,12 +1,23 @@
 "use client";
 
+import React, { useActionState, useEffect, useState } from "react";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import React, { useActionState } from "react";
 import addJob from "../emprego/_actions/addJob";
 import { jobPostSchema } from "@/schemas/jobSchema";
+import { useSession } from "next-auth/react";
+
+export type Company = {
+  id: number;
+  name: string;
+  description: string;
+  address: string;
+  website: string;
+};
 
 export default function VagaForm() {
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
   const [lastResult, action] = useActionState(addJob, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -17,7 +28,33 @@ export default function VagaForm() {
     shouldRevalidate: "onInput",
   });
 
+  const handleCompanyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedCompany(event.target.value.toString());
+    console.log(selectedCompany);
+  };
+
+  const { data: session } = useSession();
+
   //   const [amount, setAmount] = useState("0.00");
+  useEffect(() => {
+    const getCompanies = async () => {
+      const user = session?.user.id;
+      try {
+        const res = await fetch(
+          session ? `/api/companies?userId=${user}` : `/api/companies`
+        );
+        if (!res.ok) throw new Error("Error fetching companies");
+        const companyData = await res.json();
+        setCompanies(companyData);
+      } catch (error) {
+        console.error("Error fetching companies: ", error);
+      }
+    };
+
+    getCompanies();
+  }, [session]);
+
+  if (!session?.user) return console.log(session?.user?.id);
 
   return (
     <form
@@ -28,7 +65,19 @@ export default function VagaForm() {
     >
       <div>
         <label htmlFor="company">Company</label>
-        <input type="text" name="company" />
+        <div className="radio-company">
+          {companies.map((company) => (
+            <label key={company.id} className="radio">
+              <input
+                type="radio"
+                name="company"
+                value={company.id}
+                onChange={handleCompanyChange}
+              />
+              <span className="radio-option">{company.name}</span>
+            </label>
+          ))}
+        </div>
       </div>
       {fields.company.errors && (
         <p className="errorText">{fields.company.errors}</p>
