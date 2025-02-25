@@ -4,9 +4,12 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import elipseload from "@/assets/Ellipsis.svg";
 import { NavLink } from "@/components/Nav";
+// import { EmployerTable } from "../_components/CompanyTable";
 
 export default function EmpregadorPage() {
   const { data: session, status } = useSession();
+
+  // if (!session?.user.id) return console.log("not authenticated");
 
   return (
     <main>
@@ -46,6 +49,7 @@ export default function EmpregadorPage() {
             </div>
           </div>
         </div>
+        {/* <EmployerTable /> */}
       </div>
     </main>
   );
