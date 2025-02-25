@@ -7,6 +7,6 @@ export async function GET(req: Request) {
         return new Response(JSON.stringify(companies), { status: 200 })
         console.log(req)
     } catch (error) {
-        return new Response(JSON.stringify({error: `Error fetching categories: ${error}`}), {status: 500})
+        return new Response(JSON.stringify({error: `Error fetching companies: ${error}`}), {status: 500})
     }
 }

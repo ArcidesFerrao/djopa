@@ -1,22 +1,37 @@
-import db from "@/db/db";
+"use client";
+// import db from "@/db/db";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
-export const EmployerTable = () => {
+export type Company = {
+  id: number;
+  name: string;
+  description: string;
+  website: string;
+  address: string;
+  userId: string;
+};
+
+export default function EmployerTable() {
   const { data: session } = useSession();
-
+  const [companies, setCompanies] = useState<Company[]>([]);
   const user = session?.user.id;
 
-  //   const companies = db.company.findMany({
-  //     where: {
-  //       userId: user,
-  //     },
-  //   });
+  useEffect(() => {
+    const getCompanies = async () => {
+      try {
+        const res = await fetch("/api/companies");
+        if (!res.ok) throw new Error("Error fetching categories");
+        const companyData = await res.json();
+        setCompanies(companyData);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }
+    };
 
-  if (!user) return console.log("user not found");
-
-  const list = getCompanies(user);
-console.log(list)
-  //   if (!companies) return <p>Nenhuma empresa encontrada</p>;
+    getCompanies();
+  }, []);
+  if (!user) return <p>Login to your account</p>;
 
   return (
     <table>
@@ -27,6 +42,12 @@ console.log(list)
         </tr>
       </thead>
       <tbody>
+        {companies.map((company) => (
+          <tr key={company.id}>
+            <td>{company.name}</td>
+            <td>{company.website}</td>
+          </tr>
+        ))}
         <tr>
           <td>Devhub</td>
           <td>devhub.com</td>
@@ -34,14 +55,4 @@ console.log(list)
       </tbody>
     </table>
   );
-};
-
-const getCompanies = ({ user }: { user: string }) => {
-  const companies = db.company.findMany({
-    where: {
-      userId: user,
-    },
-  });
-
-  return companies;
-};
+}
