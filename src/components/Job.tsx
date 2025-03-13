@@ -25,7 +25,7 @@ export default function Job({ ...props }) {
       <div className="flex flex-col items-center justify-between">
         <div>new</div>
         <div>
-          <p>{props.addedAt}</p>
+          <p>{props.expireDate || props.addedAt}</p>
         </div>
       </div>
     </div>
