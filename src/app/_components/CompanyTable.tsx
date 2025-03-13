@@ -10,6 +10,7 @@ export type Company = {
   website: string;
   address: string;
   userId: string;
+  jobCount: number;
 };
 
 export default function EmployerTable() {
@@ -41,6 +42,7 @@ export default function EmployerTable() {
         <tr>
           <th>Nome</th>
           <th>Website</th>
+          <th>Jobs</th>
         </tr>
       </thead>
       <tbody>
@@ -48,11 +50,13 @@ export default function EmployerTable() {
           <tr key={company.id}>
             <td>{company.name}</td>
             <td>{company.website}</td>
+            <td>{company.jobCount}</td>
           </tr>
         ))}
         <tr>
           <td>Devhub</td>
           <td>devhub.com</td>
+          <td>12</td>
         </tr>
       </tbody>
     </table>

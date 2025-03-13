@@ -6,6 +6,8 @@ import { parseWithZod } from "@conform-to/zod";
 import addJob from "../emprego/_actions/addJob";
 import { jobPostSchema } from "@/schemas/jobSchema";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export type Company = {
   id: number;
@@ -16,6 +18,7 @@ export type Company = {
 };
 
 export default function VagaForm() {
+  const router = useRouter();
   const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string>();
   const [website, setWebsite] = useState("");
@@ -33,12 +36,11 @@ export default function VagaForm() {
     const companyId = event.target.value;
     setSelectedCompany(companyId);
 
-    console.log(selectedCompany);
+    // console.log(selectedCompany);
   };
 
   const { data: session } = useSession();
 
-  //   const [amount, setAmount] = useState("0.00");
   useEffect(() => {
     if (selectedCompany) {
       const findCompany = companies.find(
@@ -61,7 +63,19 @@ export default function VagaForm() {
     };
 
     getCompanies();
-  }, [selectedCompany, session]);
+
+    if (lastResult?.status === "success") {
+      toast.success("Vaga criada com sucesso!");
+      console.log("success");
+      setTimeout(() => {
+        router.push("/emprego");
+      }, 1000);
+    } else if (lastResult?.status === "error") {
+      toast.error("Erro ao criar a vaga. Tente novamente");
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCompany, session, lastResult]);
 
   if (!session?.user) return console.log(session?.user?.id);
 
@@ -76,11 +90,16 @@ export default function VagaForm() {
         <label htmlFor="company">Company</label>
         <div className="radio-company flex gap-4">
           {companies.map((company) => (
-            <label key={company.id} className="radio">
+            <label
+              key={company.id}
+              htmlFor={`company-${company.id}`}
+              className="radio"
+            >
               <input
-                className="sr-only"
+                id={`company-${company.id}`}
+                className="hidden"
                 type="radio"
-                name="company"
+                name="companyId"
                 value={company.id}
                 onChange={handleCompanyChange}
               />
@@ -89,8 +108,8 @@ export default function VagaForm() {
           ))}
         </div>
       </div>
-      {fields.company.errors && (
-        <p className="errorText">{fields.company.errors}</p>
+      {fields.companyId.errors && (
+        <p className="errorText">{fields.companyId.errors}</p>
       )}
       <div>
         <label htmlFor="title">Job Title</label>
@@ -103,15 +122,30 @@ export default function VagaForm() {
         <label htmlFor="description">Job Description</label>
         <input type="text" name="description" />
       </div>
+      {fields.description.errors && (
+        <p className="errorText">{fields.description.errors}</p>
+      )}
+      <div>
+        <label htmlFor="competencies">Skills</label>
+        <input type="text" name="competencies" />
+      </div>
+      {fields.competencies.errors && (
+        <p className="errorText">{fields.competencies.errors}</p>
+      )}
       <div>
         <label htmlFor="location">Location</label>
         <input type="text" name="location" />
       </div>
-
+      {fields.location.errors && (
+        <p className="errorText">{fields.location.errors}</p>
+      )}
       <div>
         <label htmlFor="contract">Type of Contract</label>
         <input type="text" name="contract" />
       </div>
+      {fields.contract.errors && (
+        <p className="errorText">{fields.contract.errors}</p>
+      )}
 
       <div>
         <label htmlFor="salary">Salary</label>
@@ -122,8 +156,11 @@ export default function VagaForm() {
           decimalSeparator=","
           groupSeparator="."
         /> */}
-        <input type="text" name="salary" />
+        <input type="number" name="salary" />
       </div>
+      {fields.salary.errors && (
+        <p className="errorText">{fields.salary.errors}</p>
+      )}
       <div>
         <label htmlFor="jobUrl">Link to the job</label>
         <input

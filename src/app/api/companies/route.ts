@@ -13,14 +13,23 @@ export async function GET(req: Request) {
 
             const companies = await db.company.findMany({
                 where: { userId },
+                include: {
+                    jobs: true
+                }
             });
-            return new Response(JSON.stringify(companies), { status: 200 })
+
+            const companiesWithCount = companies.map(company => ({
+                ...company,
+                jobCount: company.jobs.length,
+            }))
+
+            return new Response(JSON.stringify(companiesWithCount), { status: 200 })
         } else {
 
             const companies = await db.company.findMany();
             return new Response(JSON.stringify(companies), { status: 200 })
         }
-            console.log(req)
+            // console.log(req)
     } catch (error) {
         return new Response(JSON.stringify({error: `Error fetching companies: ${error}`}), {status: 500})
     }

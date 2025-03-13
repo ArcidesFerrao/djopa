@@ -281,10 +281,6 @@ tbody {
   }
 }
 
-.empregos {
-  /* z-index: 55; */
-}
-
 .errorText {
   color: #b37e7e;
   font-weight: 300;
@@ -413,4 +409,31 @@ tbody {
   color: var(--text-color);
   background-color: var(--disableb-input);
   border: 2px solid var(--text-color);
+}
+
+.page-head {
+  width: 100%;
+  max-width: 600px;
+}
+
+.empregador-details {
+  width: 100%;
+  max-width: 600px;
+}
+
+.empregador-header {
+  color: var(--title-color);
+  background-color: var(--text-color);
+
+  button {
+    color: var(--text-color);
+    background-color: var(--title-color);
+    border-radius: 4px;
+    padding: 4px;
+  }
+}
+
+.nav-button-company {
+  border: solid 1px var(--text-color);
+  border-radius: 4px;
 }

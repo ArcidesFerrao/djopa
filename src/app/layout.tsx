@@ -5,6 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { Nav, NavLink } from "@/components/Nav";
 import AuthButton from "@/components/AuthButton";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({
               <div className="navigators">
                 <NavLink href="/">Home</NavLink>
                 <NavLink href="/emprego">Vagas</NavLink>
-                <NavLink href="/contacto">Contacto</NavLink>
+                <NavLink href="/contacto">Contacte-nos</NavLink>
               </div>
               <div className="space-nav"></div>
               <div className="space-nav"></div>
@@ -34,6 +35,7 @@ export default function RootLayout({
                 <AuthButton />
               </div>
             </Nav>
+            <Toaster position="top-center" />
             {children}
             <Footer />
           </div>
