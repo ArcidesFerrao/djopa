@@ -348,15 +348,17 @@ tbody {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: var(--nav-bg);
+  /* background: rgba(0, 0, 0, 0.5); */
   border-radius: 8px;
   z-index: 99;
 }
 
 .menu-content {
+  transition: all 2s ease;
   border-radius: 8px;
-  background: var(--footer-bg);
-  color: var(--title-color);
+  /* background: var(--footer-bg); */
+  color: var(--light-text);
   display: flex;
   flex-direction: column;
   /* padding: 2rem; */
@@ -371,10 +373,10 @@ tbody {
 
   button {
     display: flex;
-    padding: 0.2rem 0;
+    padding: 0.4rem 0;
     justify-content: center;
     width: 100%;
-    border: var(--text-color) 1px solid;
+    border: var(--dark-text) 0.1rem solid;
     /* color: var(--title-color); */
   }
 }

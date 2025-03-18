@@ -22,15 +22,15 @@ export default function RootLayout({
         <SessionProvider>
           <div className="flex flex-col items-center justify-items-center h-auto gap-5 w-full">
             <Nav>
-              <NavLink href="/">Djopa</NavLink>
-
               <div className="navigators">
-                <NavLink href="/">Home</NavLink>
+                <NavLink href="/">Djopa</NavLink>
+
+                {/* <NavLink href="/">Home</NavLink> */}
                 <NavLink href="/emprego">Vagas</NavLink>
                 <NavLink href="/contacto">Contacte-nos</NavLink>
               </div>
-              <div className="space-nav"></div>
-              <div className="space-nav"></div>
+              {/* <div className="space-nav"></div> */}
+              {/* <div className="space-nav"></div> */}
               <div className="last-nav flex gap-1">
                 <AuthButton />
               </div>
