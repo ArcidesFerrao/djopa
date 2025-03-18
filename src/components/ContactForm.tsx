@@ -4,126 +4,9 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
-  const [email, setEmail] = useState(" ");
-  const [name, setName] = useState(" ");
-  const [message, setMessage] = useState(" ");
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const sendEmail = () => {
-    if (!email) {
-      setErrorMessage("Insira o email");
-      return;
-    }
-
-    if (!message) {
-      setErrorMessage("Insira a mensagem");
-      return;
-    }
-
-    const templateParams = {
-      user_name: name,
-      user_email: email,
-      message: message,
-    };
-
-    emailjs
-      .send(
-        "service_e2pgi6v",
-        "contact-form",
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_KEY
-      )
-      .then(
-        () => {
-          setEmail("");
-          setName("");
-          setMessage("");
-          setLoading(false);
-          setSuccessMessage("Mensagem enviada com sucesso!");
-          console.log("SUCCESS!");
-        },
-        (error) => {
-          console.error("FAILED...", error.text);
-          setErrorMessage("Ocorreu um error, tente novamente");
-          setLoading(false);
-        }
-      );
-  };
-
-  return (
-    <form className="p-4 flex flex-col gap-y-4 w-4/6 " action={sendEmail}>
-      {successMessage !== "" ? <div>{successMessage}</div> : ""}
-
-      <div className="full-name flex">
-        <div className="flex">
-          <label htmlFor="name">Name</label>
-          <input
-            placeholder="Nome"
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="flex">
-          <label htmlFor="apelido">Apelido</label>
-
-          <input
-            placeholder="Apelido"
-            type="text"
-            name="apelido"
-            id="apelido"
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="assunto">Assunto</label>
-        <input type="text" name="assunto" id="assunto" />
-      </div>
-      <div>
-        <label htmlFor="mensagem">Mensagem</label>
-      </div>
-      <div className="">
-        <textarea
-          className="flex w-full h-16 rounded-sm"
-          name="mensagem"
-          id="mensagem"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        ></textarea>
-      </div>
-      {errorMessage !== "" ? <div>{errorMessage}</div> : ""}
-      <input
-        type="submit"
-        value={loading ? "..." : "Enviar Mensagem"}
-        id="enviar"
-        disabled={loading}
-      />
-    </form>
-  );
-}
-
-export function ContatoForm() {
-  const [email, setEmail] = useState(" ");
-  const [name, setName] = useState(" ");
-  const [message, setMessage] = useState(" ");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -169,7 +52,7 @@ export function ContatoForm() {
       );
   };
   return (
-    <form action="" className="form-contact flex flex-col gap-8">
+    <form action={sendEmail} className="form-contact flex flex-col gap-8">
       <div className="flex justify-between">
         <h3>Contacte-nos</h3>
         {successMessage !== "" ? <div>{successMessage}</div> : ""}
@@ -178,8 +61,8 @@ export function ContatoForm() {
         <input
           type="text"
           name="name"
-          placeholder="Nome"
           id="name"
+          placeholder="Nome"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -230,5 +113,24 @@ export function ContatoForm() {
         />
       </div>
     </form>
+  );
+}
+
+export function ContactSideBar() {
+  return (
+    <section className="contact-sidebar flex flex-col gap-4">
+      <div>
+        <h4>Telefone</h4>
+        <p>+258 82 1234567</p>
+      </div>
+      <div>
+        <h4>E-mail</h4>
+        <p>contacto@djopa.com</p>
+      </div>
+      <div>
+        <h4>Endereco</h4>
+        <p>Maputo, Mozambique</p>
+      </div>
+    </section>
   );
 }

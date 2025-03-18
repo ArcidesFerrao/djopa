@@ -496,3 +496,15 @@ tbody {
   border-radius: 16px;
   width: 700px;
 }
+
+.contact-sidebar {
+  border-radius: 16px;
+  padding: 30px 40px;
+  background-color: var(--post-bg);
+  height: fit-content;
+
+  p {
+    color: var(--placeholder);
+    font-size: 12px;
+  }
+}
