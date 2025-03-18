@@ -1,7 +1,4 @@
-// "use client";
-
 import Job from "@/components/Job";
-// import JobList from "@/components/JobList";
 import db from "@/db/db";
 
 export default async function JobsPage() {
@@ -11,9 +8,21 @@ export default async function JobsPage() {
     console.log("nenhuma vaga disponivel");
   }
   return (
-    <main className="flex flex-col items-center gap-8 justify-center">
-      {/* <JobList /> */}
-      <section className="jobs flex flex-col gap-4 w-full items-center justify-center">
+    <main className="flex justify-between">
+      <section className="job-filter p-4 h-fit rounded-lg">
+        <div className="filter-header flex justify-between">
+          <h3>Filtro</h3>
+          <button>Clear</button>
+        </div>
+        <div className="p-4">
+          <ul>
+            <li>Maputo</li>
+            <li>Sofala</li>
+            <li>Nampula</li>
+          </ul>
+        </div>
+      </section>
+      <section className="jobs flex flex-col gap-4  items-center justify-center">
         {jobs &&
           (await jobs).map((vaga) => {
             console.log(

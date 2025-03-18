@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${mulish.className} antialiased `}>
         <SessionProvider>
-          <div className="flex flex-col items-center justify-items-center h-auto gap-24 w-full">
+          <div className="flex flex-col items-center justify-items-center h-auto gap-5 w-full">
             <Nav>
               <NavLink href="/">Djopa</NavLink>
 

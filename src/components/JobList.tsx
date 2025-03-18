@@ -81,7 +81,7 @@ export default function JobList() {
         </button>
       </div>
 
-      <section className="jobs flex flex-col gap-4 w-full items-center justify-center">
+      <section className="jobs flex flex-col gap-4 items-center justify-center">
         {dados &&
           search(dados).map((vaga: JobData) => (
             <Job

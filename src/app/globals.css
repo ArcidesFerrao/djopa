@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 :root {
+  --page-bg: #d6f2f2;
+  --page-text: #343a40;
+  --post-hover: #d9d9d9;
+  --post-bg: #f4f5fa;
+  --nav-bg: #45474f;
+  --light-text: #d9d9d9;
+  --dark-text: #343a40;
+  --btn-bg: #343a40;
+  --placeholder: #343a40c7;
+
+  --job-card-w: 340px;
+  --job-card-h: 120px;
+  --job-w: 800px;
+  --job-h: 200px;
+
   --background: rgba(217, 217, 216, 0.89);
   --bg-color: rgba(217, 217, 216);
   --foreground: #171717;
@@ -19,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background);
+  /* background: var(--background); */
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -31,23 +46,25 @@
 
 .emprego-container,
 body {
-  color: var(--foreground);
+  color: var(--dark-text);
+  /* color: var(--foreground); */
   /* font-family: Arial, Helvetica, sans-serif; */
-  width: 1000px;
-  max-width: 1000px;
+  width: 1040px;
+  max-width: 1040px;
   display: flex;
   justify-content: center;
   padding: 0;
   /* overflow: hidden; */
-  background: url("./assets/background-title.jpg") center no-repeat;
+  /* background: url("./assets/background-title.jpg") center no-repeat; */
+  background-color: var(--page-bg);
   background-size: cover;
   background-attachment: fixed;
 }
 
 main {
-  background: var(--background);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(8px);
+  /* background: var(--background); */
+  /* backdrop-filter: blur(4px); */
+  /* -webkit-backdrop-filter: blur(8px); */
   transition: all 250ms ease-in;
   width: 100%;
   min-height: 80vh;
@@ -57,9 +74,10 @@ main {
 }
 
 a {
-  color: var(--title-nav);
+  /* color: var(--title-nav); */
   font-weight: 500;
   cursor: pointer;
+  color: var(--light-text);
 }
 
 a:hover {
@@ -83,20 +101,21 @@ h3 {
 label {
   font-weight: 400;
   font-size: 14px;
-  color: var(--text-color);
+  color: var(--dark-text);
 }
 
 textarea {
   background: none;
-  color: var(--text-color);
+  color: var(--dark-text);
   padding: 0.2rem 0.4rem;
   font-weight: 300;
   font-size: 12px;
-  border: var(--border-color) 1px solid;
+  border: var(--placeholder) 1px solid;
+  height: 160px;
 }
 
 input {
-  color: var(--text-color);
+  color: var(--dark-text);
   padding: 0.2rem 0.4rem;
   font-weight: 300;
   font-size: 12px;
@@ -104,17 +123,17 @@ input {
 }
 
 input::placeholder {
-  color: var(--title-nav);
+  color: var(--placeholder);
 }
 input[type="submit"]:hover {
   background-color: var(--foreground);
-  color: var(--background);
+  /* color: var(--background); */
 }
 
 input[type="submit"] {
-  color: var(--title-color);
-  background-color: var(--text-color);
-  border-radius: 2px;
+  color: var(--light-text);
+  background-color: var(--dark-text);
+  border-radius: 8px;
   font-weight: 300;
   font-size: medium;
   cursor: pointer;
@@ -126,14 +145,16 @@ button:hover {
 }
 button {
   transition: 250ms all ease-in;
-  color: var(--title-nav);
+  color: var(--light-text);
+  /* color: var(--title-nav); */
   font-weight: 300;
   cursor: pointer;
 }
 
 form input {
-  border: var(--border-color) 1px solid;
-  border-radius: 2px;
+  border: var(--placeholder) 1px solid;
+  padding: 1rem;
+  border-radius: 8px;
   width: 50%;
 
   /* background-color: var(--background); */
@@ -212,10 +233,12 @@ tbody {
   align-self: flex-start;
   justify-content: space-between;
   align-items: center;
+  margin: 50px 0;
   width: 100%;
   padding: 1rem;
   border-radius: 8px;
-  color: var(--title-nav);
+  color: var(--light-text);
+  background-color: var(--nav-bg);
 
   a {
     padding: 0 0.4rem;
@@ -243,14 +266,21 @@ tbody {
   }
 }
 
+.footer {
+  background-color: var(--nav-bg);
+  border-radius: 8px;
+  margin-bottom: 50px;
+  padding: 40px;
+}
+
 .footer,
 .header-title {
   width: 100%;
-  padding: 1rem;
-  color: var(--active-color);
+  /* padding: 1rem; */
+  color: var(--light-text);
 
   a {
-    color: var(--active-color);
+    color: var(--light-text);
   }
 
   p {
@@ -259,11 +289,18 @@ tbody {
 }
 
 .job-container:hover {
-  background-color: var(--active-color);
+  /* background-color: var(--post-hover); */
+  border: none;
 }
 .job-container {
+  width: 700px;
+  height: 140px;
   transition: all 500ms ease-out;
-  border: 2px solid var(--active-color);
+  border: 2px solid var(--post-bg);
+  background-color: var(--post-bg);
+  a {
+    color: var(--dark-text);
+  }
 
   h3 {
     font-size: medium;
@@ -279,6 +316,16 @@ tbody {
     font-size: small;
     font-weight: 300;
   }
+}
+
+.job-filter {
+  background-color: var(--post-bg);
+  width: 200px;
+}
+
+.filter-header {
+  padding-bottom: 8px;
+  border-bottom: solid 1px var(--placeholder);
 }
 
 .errorText {
@@ -328,7 +375,7 @@ tbody {
     justify-content: center;
     width: 100%;
     border: var(--text-color) 1px solid;
-    color: var(--title-color);
+    /* color: var(--title-color); */
   }
 }
 
@@ -382,6 +429,7 @@ tbody {
 
 .position a:hover {
   color: var(--footer-bg);
+  text-decoration: underline;
 }
 
 .job-form input:disabled {
@@ -440,4 +488,11 @@ tbody {
 
 .job-footer {
   min-width: 120px;
+}
+
+.form-contact {
+  background-color: var(--post-bg);
+  padding: 20px;
+  border-radius: 16px;
+  width: 700px;
 }
