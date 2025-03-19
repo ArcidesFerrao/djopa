@@ -42,9 +42,26 @@ export default async function JobPage({
           </div>
         </div>
       </section>
-      <section className="similar-jobs">
-        <div className="job-card"></div>
+      <section className="similar-jobs flex flex-col gap-5">
+        <h3>Outras vagas</h3>
+        <div className="similar-list flex flex-col items-center justify-center gap-5">
+          <JobCard />
+          <JobCard />
+        </div>
       </section>
     </main>
+  );
+}
+
+export function JobCard() {
+  return (
+    <div className="job-card flex flex-col justify-between">
+      <h4>Job title</h4>
+      <h4>Company Name</h4>
+      <div className="flex justify-between">
+        <p>Maputo</p>
+        <p>Valido ate 25/03/2025</p>
+      </div>
+    </div>
   );
 }
