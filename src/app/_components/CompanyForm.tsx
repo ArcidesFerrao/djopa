@@ -30,33 +30,71 @@ export default function CompanyForm() {
       className="job-form p-4 flex flex-col gap-y-4 w-4/6 "
     >
       <div>
-        <label htmlFor="userId">Id:</label>
+        {/* <label htmlFor="userId">Id:</label> */}
         <input
-          type="text"
+          type="hidden"
           name="userId"
           defaultValue={session.user ? session?.user?.id : ""}
         />
       </div>
-      <div>
-        <label htmlFor="companyName">Nome:</label>
-        <input type="text" name="companyName" />
+      <div className="flex flex-col">
+        {/* <label htmlFor="companyName">Nome:</label> */}
+        <input
+          className="w-full"
+          type="text"
+          name="companyName"
+          placeholder="Nome da Empresa"
+        />
+        {fields.companyName.allErrors && <p>{fields.companyName.errors}</p>}
       </div>
-      {fields.companyName.allErrors && <p>{fields.companyName.errors}</p>}
-      <div>
-        <label htmlFor="companyAddress">Localizacao</label>
-        <input type="text" name="companyAddress" />
+      <div className="flex flex-col">
+        {/* <label htmlFor="companyDesc">Descricao</label> */}
+        <textarea
+          className="w-full rounded-lg p-4 text-md"
+          name="companyDesc"
+          placeholder="Sobre a Empresa"
+        />
+        {fields.companyDesc.allErrors && <p>{fields.companyDesc.errors}</p>}
+      </div>
+      <div className="flex flex-col">
+        {/* <label htmlFor="companyAddress">Localizacao</label> */}
+        <input
+          className="w-full"
+          type="text"
+          name="companyAddress"
+          placeholder="Endereco"
+        />
+        {fields.companyAddress.allErrors && (
+          <p>{fields.companyAddress.errors}</p>
+        )}
+      </div>
+      <div className="flex flex-col">
+        {/* <label htmlFor="companyUrl">Website</label> */}
+        <input
+          className="w-full"
+          type="url"
+          name="companyUrl"
+          placeholder="Website"
+        />
+        {fields.companyUrl.allErrors && <p>{fields.companyUrl.errors}</p>}
+      </div>
+      <div className="flex flex-col">
+        {/* <label htmlFor="companyUrl">Website</label> */}
+        <input
+          className="w-full"
+          type="email"
+          name="companyEmail"
+          placeholder="Endereco Eectronico"
+        />
+        {fields.companyEmail.allErrors && <p>{fields.companyEmail.errors}</p>}
       </div>
 
-      <div>
-        <label htmlFor="companyDesc">Descricao</label>
-        <input type="text" name="companyDesc" />
-      </div>
-      <div>
-        <label htmlFor="companyUrl">Website</label>
-        <input type="url" name="companyUrl" />
-      </div>
-
-      <input type="submit" name="submit" id="submit" className="p-2 my-4" />
+      <input
+        type="submit"
+        name="submit"
+        id="submit"
+        className="p-4 my-4 font-semibold"
+      />
     </form>
   );
 }

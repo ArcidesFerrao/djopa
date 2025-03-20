@@ -13,6 +13,7 @@
   --btn-bg: #343a40;
   --placeholder: #343a40c7;
   --card-list-bg: #c8e6e6;
+  --error-button: rgba(220, 38, 38, 0.7);
 
   --job-card-w: 340px;
   --job-card-h: 120px;
@@ -28,7 +29,6 @@
   --title-color: #ffffff;
   --active-color: #ffffff;
   --title-nav: #171717;
-  --error-button: #dc2626;
   --disableb-input: #bdbdbd;
   /* --title-nav: #a3a3a3; */
 
@@ -127,15 +127,20 @@ input::placeholder {
   color: var(--placeholder);
 }
 input[type="submit"]:hover {
-  background-color: var(--foreground);
+  background-color: var(--nav-bg);
   /* color: var(--background); */
+}
+
+input[type="submit"]:active {
+  color: var(--dark-text);
+  background-color: var(--light-text);
 }
 
 input[type="submit"] {
   color: var(--light-text);
   background-color: var(--dark-text);
   border-radius: 8px;
-  font-weight: 300;
+  font-weight: 400;
   font-size: medium;
   cursor: pointer;
   width: 100%;
@@ -166,10 +171,17 @@ form div {
   justify-content: space-between;
 }
 
+form p {
+  color: var(--error-button);
+  padding: 2px 20px;
+  font-size: small;
+}
+
 table {
   width: 600px;
   border-collapse: collapse;
   border-spacing: 0;
+  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -190,8 +202,8 @@ thead {
 }
 thead th {
   padding: 1rem;
-  background-color: var(--text-color);
-  color: var(--title-color);
+  background-color: var(--nav-bg);
+  color: var(--light-text);
 }
 
 thead tr {
@@ -201,7 +213,7 @@ thead tr {
 
 tbody tr {
   border-radius: 3px;
-  background-color: var(--active-color);
+  /* background-color: var(--active-color); */
   /* display: flex; */
   align-items: center;
 }
@@ -467,28 +479,6 @@ tbody {
   max-width: 600px;
 }
 
-.empregador-details {
-  width: 100%;
-  max-width: 600px;
-}
-
-.empregador-header {
-  color: var(--title-color);
-  background-color: var(--text-color);
-
-  button {
-    color: var(--text-color);
-    background-color: var(--title-color);
-    border-radius: 4px;
-    padding: 4px;
-  }
-}
-
-.nav-button-company {
-  border: solid 1px var(--text-color);
-  border-radius: 4px;
-}
-
 .job-footer {
   min-width: 120px;
 }
@@ -509,6 +499,12 @@ tbody {
   p {
     color: var(--placeholder);
     font-size: 12px;
+  }
+}
+
+.job-container {
+  .job-info {
+    padding: 0;
   }
 }
 
@@ -559,4 +555,42 @@ tbody {
   /* min-height: 200px; */
   height: fit-content;
   max-height: 600px;
+}
+
+.employer-section {
+  background-color: var(--post-bg);
+  border-radius: 16px;
+
+  /* button, */
+  span {
+    color: var(--dark-text);
+  }
+}
+
+.empregador-details {
+  width: 100%;
+  max-width: 600px;
+}
+
+.empregador-header {
+  color: var(--dark-text);
+  /* background-color: var(--nav-bg); */
+
+  button {
+    color: var(--light-text);
+    background-color: var(--btn-bg);
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+}
+
+.nav-button-company {
+  border: solid 1px var(--placeholder);
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.new-company {
+  background-color: var(--post-bg);
+  border-radius: 16px;
 }

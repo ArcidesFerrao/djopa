@@ -22,7 +22,7 @@ export default async function JobPage({
           <button>Candidatar-me</button>
         </div>
         <div className="address-applications flex gap-6">
-          <p>{job?.location}, Mozambique</p>
+          <p>{job?.location}</p>
           <p>MZN 60 000,00</p>
           <p>Valido ate 25/03/2025</p>
           <p>5 candidaturas</p>

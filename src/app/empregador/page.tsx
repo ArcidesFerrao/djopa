@@ -13,13 +13,13 @@ export default function EmpregadorPage() {
 
   return (
     <main>
-      <div className="flex flex-col gap-12 justify-center items-center p-12 ">
+      <div className="employer-section flex flex-col gap-10 justify-center items-center p-8 ">
         <div className="page-head  ">
           {status === "loading" ? (
             <Image src={elipseload} alt="loading" width={100} height={100} />
           ) : (
             status === "authenticated" && (
-              <div className="empregador-header flex items-center justify-between gap-4 p-4">
+              <div className="empregador-header flex items-center justify-between gap-4">
                 <div className="flex gap-4 items-center">
                   <Image
                     src={session?.user.image ?? ""}
@@ -44,15 +44,11 @@ export default function EmpregadorPage() {
         </div>
 
         <div className="empregador-details w-full">
-          <div className="companies">
-            <div className="companies-header flex items-center justify-between gap-4">
-              <h3>Empresas</h3>
-              <NavLink href="/empresa/new">
-                <span className="nav-button-company p-4 ">
-                  Registar Empresa
-                </span>
-              </NavLink>
-            </div>
+          <div className="companies-header flex items-center justify-between gap-4">
+            <h3>Empresas</h3>
+            <NavLink href="/empresa/new">
+              <span className="nav-button-company">Registar Empresa</span>
+            </NavLink>
           </div>
         </div>
         <EmployerTable />
