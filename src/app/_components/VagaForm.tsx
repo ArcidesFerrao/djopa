@@ -84,10 +84,12 @@ export default function VagaForm() {
       id={form.id}
       onSubmit={form.onSubmit}
       action={action}
-      className="job-form p-4 flex flex-col gap-y-4 w-4/6 "
+      className="job-form p-8 flex flex-col gap-y-4 w-4/6 "
     >
+      <h3 className="py-4 font-semibold">Adicionar Vaga</h3>
+
       <div>
-        <label htmlFor="company">Company</label>
+        <label htmlFor="company">Nome da Empresa</label>
         <div className="radio-company flex gap-4">
           {companies.map((company) => (
             <label
@@ -112,60 +114,96 @@ export default function VagaForm() {
         <p className="errorText">{fields.companyId.errors}</p>
       )}
       <div>
-        <label htmlFor="title">Job Title</label>
-        <input type="text" name="title" />
+        {/* <label htmlFor="title">Job Title</label> */}
+        <input
+          className="w-full"
+          type="text"
+          name="title"
+          placeholder="Titulo da Vaga"
+        />
       </div>
       {fields.title.errors && (
         <p className="errorText">{fields.title.errors}</p>
       )}
       <div>
-        <label htmlFor="description">Job Description</label>
-        <input type="text" name="description" />
+        {/* <label htmlFor="description">Job Description</label> */}
+        <textarea
+          className="w-full rounded-lg p-4"
+          name="description"
+          placeholder="Sobre a Vaga"
+          id="description"
+        ></textarea>
       </div>
       {fields.description.errors && (
         <p className="errorText">{fields.description.errors}</p>
       )}
       <div>
-        <label htmlFor="competencies">Skills</label>
-        <input type="text" name="competencies" />
+        {/* <label htmlFor="competencies">Skills</label> */}
+        <textarea
+          className="w-full rounded-lg p-4"
+          name="competencies"
+          placeholder="Competencias"
+          id="competencies"
+        ></textarea>
       </div>
       {fields.competencies.errors && (
         <p className="errorText">{fields.competencies.errors}</p>
       )}
       <div>
-        <label htmlFor="location">Location</label>
-        <input type="text" name="location" />
+        {/* <label htmlFor="location">Location</label> */}
+        <input
+          className="w-full"
+          type="text"
+          name="location"
+          placeholder="Endereco da Empresa"
+        />
       </div>
       {fields.location.errors && (
         <p className="errorText">{fields.location.errors}</p>
       )}
-      <div>
-        <label htmlFor="contract">Type of Contract</label>
-        <input type="text" name="contract" />
+      <div className="select-section flex gap-8">
+        <select name="contract" id="contract">
+          <option value="">Tipo de Contrato</option>
+          <option value="tempo_integral">Tempo Integral</option>
+          <option value="meio_periodo">Meio Periodo</option>
+          <option value="freelance">Freelance</option>
+          <option value="estagio">Estagio</option>
+        </select>
+        <select id="salary" name="salary">
+          <option value="">Faixa Salarial</option>
+          <option value="menos_10000">Menos de 10.000 MT</option>
+          <option value="10000_20000">10.000 - 20.000 MT</option>
+          <option value="20000_50000">20.000 - 50.000 MT</option>
+          <option value="50000_100000">50.000 - 100.000 MT</option>
+          <option value="100000_mais">Mais de 100.000 MT</option>
+        </select>
+        <input type="date" name="validade" id="validade" />
       </div>
+
       {fields.contract.errors && (
         <p className="errorText">{fields.contract.errors}</p>
       )}
 
-      <div>
-        <label htmlFor="salary">Salary</label>
-        {/* <CurrencyInput
-          id="salary-input"
-          name="salary"
-          suffix="MZN"
-          decimalSeparator=","
-          groupSeparator="."
-        /> */}
-        <input type="number" name="salary" />
-      </div>
       {fields.salary.errors && (
         <p className="errorText">{fields.salary.errors}</p>
       )}
       <div>
-        <label htmlFor="jobUrl">Link to the job</label>
         <input
+          className="w-full"
+          type="email"
+          name="jobEmail"
+          placeholder="Email para candidaturas"
+          // value={website}
+          // onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+      <div>
+        {/* <label htmlFor="jobUrl">Link to the job</label> */}
+        <input
+          className="w-full"
           type="url"
           name="jobUrl"
+          placeholder="Link para candidaturas"
           value={website}
           onChange={(e) => setWebsite(e.target.value)}
         />
@@ -173,7 +211,13 @@ export default function VagaForm() {
       {fields.jobUrl.errors && (
         <p className="errorText">{fields.jobUrl.errors}</p>
       )}
-      <input type="submit" name="submit" id="submit" className="p-2 my-4" />
+      <input
+        type="submit"
+        name="submit"
+        id="submit"
+        value="Criar Vaga"
+        // className="p-2 my-4"
+      />
     </form>
   );
 }
