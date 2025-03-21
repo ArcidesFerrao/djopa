@@ -93,6 +93,7 @@ export default function CompanyForm() {
         type="submit"
         name="submit"
         id="submit"
+        value="Registar"
         className="p-4 my-4 font-semibold"
       />
     </form>

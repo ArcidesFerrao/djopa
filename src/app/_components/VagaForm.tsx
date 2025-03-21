@@ -86,8 +86,6 @@ export default function VagaForm() {
       action={action}
       className="job-form p-8 flex flex-col gap-y-4 w-4/6 "
     >
-      <h3 className="py-4 font-semibold">Adicionar Vaga</h3>
-
       <div>
         <label htmlFor="company">Nome da Empresa</label>
         <div className="radio-company flex gap-4">

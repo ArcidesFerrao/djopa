@@ -456,11 +456,6 @@ tbody {
   text-decoration: underline;
 }
 
-.job-form {
-  background-color: var(--post-bg);
-  border-radius: 16px;
-}
-
 .job-form input:disabled {
   border: none;
   background: none;
@@ -554,8 +549,9 @@ tbody {
 }
 
 .job-card:hover {
-  background-color: var(--post-hover);
-  border: 2px solid var(--page-bg);
+  /* background-color: var(--placeholder); */
+  border: 2px solid var(--placeholder);
+  color: var(--placeholder);
 }
 
 .similar-jobs h3 {
@@ -604,7 +600,27 @@ tbody {
   padding: 10px 20px;
 }
 
+.new-job,
 .new-company {
   background-color: var(--post-bg);
   border-radius: 16px;
+}
+
+.subtitle-header,
+.homepage-header {
+  background-color: var(--post-bg);
+  color: var(--placeholder);
+  border-radius: 16px;
+}
+
+.subtitle-header {
+  width: 100%;
+  padding: 10px;
+}
+
+.subtitle-header p {
+  color: var(--light-text);
+  background-color: var(--placeholder);
+  border-radius: 16px;
+  padding: 20px;
 }

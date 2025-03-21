@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex flex-col gap-8 row-start-2 items-center justify-center px-4 ">
+      <main className="flex flex-col gap-8 row-start-2 items-center justify-center ">
         <Subtitle />
         <JobList />
       </main>
